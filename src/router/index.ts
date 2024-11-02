@@ -42,6 +42,21 @@ const router = createRouter({
       name: 'personalCenter',
       component: () => import('@/views/personalCenter/index.vue'),
     },
+    {
+      path: '/KnowledgeEvolution',
+      name: 'KnowledgeEvolution',
+      component: () => import('@/views/KnowledgeEvolution/index.vue'),
+    },
+    {
+      path: '/SankeyDiagram',
+      name: 'SankeyDiagram',
+      component: () => import('@/views/SankeyDiagram/index.vue'),
+    },
+    {
+      path: '/TechnicalPedigree',
+      name: 'TechnicalPedigree',
+      component: () => import('@/views/TechnicalPedigree/index.vue'),
+    },
   ],
 })
 
