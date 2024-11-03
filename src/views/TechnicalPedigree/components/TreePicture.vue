@@ -9,7 +9,7 @@ import { TreeChart } from 'echarts/charts';
 import { TooltipComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import type { ECharts } from 'echarts/core';
-
+import type { TooltipComponentFormatterCallbackParams } from 'echarts';
 echarts.use([TreeChart, TooltipComponent, CanvasRenderer]);
 
 const chartDom = ref<HTMLElement | null>(null);
@@ -45,8 +45,15 @@ onMounted(() => {
     myChart.setOption({
       tooltip: {
         trigger: 'item',
-        triggerOn: 'mousemove'
-      },
+        triggerOn: 'click',
+        formatter: (params: TooltipComponentFormatterCallbackParams) => {
+      return `<div style="text-align: left;">
+        <strong>我爱你${params}</strong><br/>
+        子节点数: ${params}
+        <button style="width: 50px;">点我</button>
+      </div>`;
+    }
+  },
       series: [
         {
           type: 'tree',
@@ -72,7 +79,7 @@ onMounted(() => {
           emphasis: {
             focus: 'descendant'
           },
-          expandAndCollapse: true,
+          expandAndCollapse: false,
           animationDuration: 550,
           animationDurationUpdate: 750
         }

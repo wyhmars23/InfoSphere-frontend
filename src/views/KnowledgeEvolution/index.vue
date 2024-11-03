@@ -14,7 +14,7 @@
 
 <script lang="ts" setup>
 import Topics from './components/Topics.vue';
-import { useRouter } from 'vue-router';
+// import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 
 interface Topics {
@@ -22,7 +22,7 @@ interface Topics {
   title: string;
 }
 
-const router = useRouter();
+// const router = useRouter();
 const items = ref<Topics[]>([
   { key: '1', title: 'Tab 1' },
   { key: '2', title: 'Tab 2' },
@@ -52,6 +52,7 @@ const items = ref<Topics[]>([
 
   .main {
     display: flex;
+    flex-wrap: wrap;
     margin: 0 50px;
   }
 }
