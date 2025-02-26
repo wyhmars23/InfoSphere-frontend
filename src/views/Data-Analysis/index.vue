@@ -93,15 +93,14 @@ const searchDetail = async () => {
     const response = await postDetail(id, id);
     console.log('查询成功，返回的数据:', response);
     const Detail = Object.entries(response);
-    dataStore.setData('basicInfo', Detail.slice(0, 48));  // ✅ 取索引 0 到 47
-    dataStore.setData('applicantInfo', Detail.slice(48, 72));  // ✅ 取索引 48 到 71
-    dataStore.setData('inventorInfo', Detail.slice(72, 80));  // ✅ 取索引 72 到 79
-    dataStore.setData('agencyInfo', Detail.slice(80, 85));  // ✅ 取索引 80 到 84
-    dataStore.setData('citationFamilyInfo', Detail.slice(85, 121));  // ✅ 取索引 85 到 120
-    dataStore.setData('priorityPCTInfo', Detail.slice(121, 132));  // ✅ 取索引 121 到 131
-    dataStore.setData('legalStatus', Detail.slice(132, 185));  // ✅ 取索引 132 到 184
-    dataStore.setData('assessment', Detail.slice(185, 194));  // ✅ 取索引 185 到 193
-
+    dataStore.setData('basicInfo', Detail.slice(0, 48));
+    dataStore.setData('applicantInfo', Detail.slice(48, 72));
+    dataStore.setData('inventorInfo', Detail.slice(72, 80));
+    dataStore.setData('agencyInfo', Detail.slice(80, 85));
+    dataStore.setData('citationFamilyInfo', Detail.slice(85, 121));
+    dataStore.setData('priorityPCTInfo', Detail.slice(121, 132));
+    dataStore.setData('legalStatus', Detail.slice(132, 185));
+    dataStore.setData('assessment', Detail.slice(185, 194));
   } catch (error) {
     console.error('查询失败:', error);
   }
