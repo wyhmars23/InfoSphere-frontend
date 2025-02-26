@@ -23,7 +23,7 @@ const router = createRouter({
       component: () => import('@/views/Data-history/index.vue'),
     },
     {
-      path: '/Data-Analysis',
+      path: '/Data-Analysis/:id',
       name: 'Data-Analysis',
       component: () => import('@/views/Data-Analysis/index.vue'),
     },

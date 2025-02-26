@@ -18,6 +18,7 @@ export default [
   {
     rules: {
       'vue/multi-word-component-names': 'off', // 禁用多词组件名称规则
+      'vue/block-lang': 'off'
     },
   },
 ];

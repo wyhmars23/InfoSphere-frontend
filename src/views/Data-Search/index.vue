@@ -11,9 +11,6 @@
         <cardList />
       </div>
     </div>
-    <div class="bottom">
-      <a-pagination :total="200" show-page-size />
-    </div>
   </div>
 </template>
 
@@ -32,7 +29,7 @@ import selectMenu from './components/Select.vue';
 
 .head {
   width: 100%;
-  height: 180px;
+  height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,7 +42,7 @@ import selectMenu from './components/Select.vue';
   flex-direction: row;
 
   .left {
-    width: 25%;
+    width: 22%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,18 +51,10 @@ import selectMenu from './components/Select.vue';
 
 
   .right {
-    width: 70%;
+    width: 75%;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-}
-
-.bottom {
-  width: 100%;
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 </style>
