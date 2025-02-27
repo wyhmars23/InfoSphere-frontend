@@ -14,7 +14,7 @@ import { ref } from 'vue';
 const items = ref(
   [1, 2, 3, 4, 5, 6].map(i => ({
     key: `key-${i}`,
-    src: 'https://via.placeholder.com/200', // 替换为实际图片 URL
+    src: "https://source.unsplash.com/random/300x200", // 替换为实际图片 URL
     title: `Item ${i}`,
     description: `Description for Item ${i}`
   }))

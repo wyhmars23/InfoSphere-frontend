@@ -19,6 +19,9 @@
 <script setup lang="ts">
 import { ref,computed } from 'vue';
 import { postLogin , postRegister } from './api';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 // 定义响应式数据
 const username = ref('');
@@ -35,8 +38,11 @@ const login = async () => {
     const response = await postLogin(postData.value);
     console.log('登录成功，返回的数据:', response); // 直接访问 response
     localStorage.setItem('token', response.token); // 保存 token
+    localStorage.setItem('isAuthenticated', 'true'); //设置登录状态
+    router.push('/entrance');
   } catch (error) {
     console.error('登录失败:', error);
+    alert("登录失败，请重试");
   }
 };
 
@@ -45,8 +51,10 @@ const register = async () => {
   try {
     const response = await postRegister(postData.value);
     console.log('注册成功:', response.message);
+    alert("注册成功");
   } catch (error) {
     console.error('注册失败:', error);
+    alert("注册失败，请重试");
   }
 };
 </script>

@@ -14,7 +14,6 @@
 
 <script lang="ts" setup>
 import Topics from './components/Topics.vue';
-// import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 
 interface Topics {
@@ -29,13 +28,6 @@ const items = ref<Topics[]>([
   { key: '3', title: 'Tab 3' }
 ]);
 
-// const navigateTo1 = (path: string) => {
-//   router.push(path);
-// };
-
-// const navigateTo2 = (path: string) => {
-//   router.push(path);
-// };
 </script>
 
 <style scoped lang="less">
