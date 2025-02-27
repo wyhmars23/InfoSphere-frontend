@@ -5,7 +5,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/login',
+      redirect: '/entrance',
     },
     {
       path: '/Data-Search',
@@ -64,7 +64,7 @@ const router = createRouter({
       path: '/TechnicalPedigree',
       name: 'TechnicalPedigree',
       component: () => import('@/views/TechnicalPedigree/index.vue'),
-      meta: { requiresAuth: true }, 
+      meta: { requiresAuth: true },
     },
   ],
 });

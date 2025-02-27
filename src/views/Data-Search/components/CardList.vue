@@ -82,7 +82,7 @@ defineOptions({
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 300px;
+  height: 380px;
   /* 增大空状态区域 */
 }
 

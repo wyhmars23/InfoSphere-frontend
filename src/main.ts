@@ -9,6 +9,9 @@ import ArcoVueIcon from '@arco-design/web-vue/es/icon';
 
 const app = createApp(App)
 
+
+
+
 app.use(createPinia())
 app.use(router)
 // 使用 Arco Design
