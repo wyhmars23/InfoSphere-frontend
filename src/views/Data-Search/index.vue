@@ -42,7 +42,7 @@ import selectMenu from './components/Select.vue';
   flex-direction: row;
 
   .left {
-    width: 22%;
+    width: 20%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,6 +53,7 @@ import selectMenu from './components/Select.vue';
   .right {
     width: 75%;
     display: flex;
+    padding: 1px;
     flex-direction: column;
     align-items: center;
   }

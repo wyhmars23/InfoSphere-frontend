@@ -3,10 +3,10 @@
     <div class="patent-card-list">
       <a-row :gutter="0">
         <a-col :span="24" v-for="(row, index) in transformedData" :key="index">
-          <router-link :to="`/Data-Analysis/${row[row.length - 1]?.value}`" style="text-decoration: none;">
+          <router-link :to="`/Data-Analysis/${row[row.length - 1]?.value}`" style="text-decoration: none;" target="_blank">
             <a-card :title="'专利标题: ' + (row[0]?.value || '未知标题')" bordered style="margin-bottom: -10px;">
               <a-descriptions>
-                <a-descriptions-item v-for="(item, itemIndex) in row" :key="itemIndex" :label="item.label">
+                <a-descriptions-item v-for="(item, itemIndex) in row.slice(1,5)" :key="itemIndex" :label="item.label">
                   <a-tag>{{ item.value || '暂无数据' }}</a-tag>
                 </a-descriptions-item>
               </a-descriptions>
@@ -22,7 +22,7 @@
     </div>
   </a-space>
   <div class="bottom">
-    <a-pagination :total="200" show-page-size />
+    <a-pagination :total="totalPages" @change=getCurrent @page-size-change=getSize show-page-size/>
   </div>
   <div style="height: 80px;"></div>
 </template>
@@ -30,11 +30,27 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 import { eventBus } from '../eventBus';
-import type { Item } from '../api';
+import type { Item,pages} from '../api';
 
+const totalPages =ref<number>(0);
+const PagesCondition = ref<pages>({
+  page: 1,
+  size: 10
+});
 const itemsData = ref<Item[] | null>(null);
 const transformedData = ref<{ label: string; value: string | null }[][]>([]); // 存储转换后的数据
 
+
+const getCurrent = (page: number) => {
+  PagesCondition.value.page = page;
+  callbackPages(PagesCondition.value);
+}
+
+
+const getSize = (size: number) => {
+  PagesCondition.value.size = size;
+  callbackPages(PagesCondition.value);
+}
 
 const transformPatentData = (data: Item[]): { label: string; value: string | null }[][] => {
   return data.map((item) => [
@@ -47,25 +63,35 @@ const transformPatentData = (data: Item[]): { label: string; value: string | nul
   ]);
 };
 
+//返回筛选数据
+const callbackPages = (Page:pages ) => {
+  eventBus.emit('conditionForPage', Page);
+};
+
+
 // 处理接收到的数据
 const handleItems = (items: Item[]) => {
   itemsData.value = items;
-  // console.log("原始数据:", itemsData.value);
-
   if (!itemsData.value) return;
-
   transformedData.value = transformPatentData(itemsData.value); // 存入响应式变量
-  console.log("转换后的数据:", transformedData.value);
 };
+
+const handleTotal = (total: number) => {
+  totalPages.value = total;
+}
+
+
 
 onMounted(() => {
   // 监听 'eventForCard' 事件
   eventBus.on('eventForCard', handleItems);
+  eventBus.on('eventForTotal', handleTotal);
 });
 
 onUnmounted(() => {
   // 组件销毁时取消监听，避免内存泄漏
   eventBus.off('eventForCard', handleItems);
+  eventBus.off('eventForTotal', handleTotal);
 });
 
 defineOptions({
@@ -75,7 +101,7 @@ defineOptions({
 
 <style scoped lang="less">
 .patent-card-list {
-  padding-left: 20px;
+  padding-left:4%;
 }
 
 .empty-container {

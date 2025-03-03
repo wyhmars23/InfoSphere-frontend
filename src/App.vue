@@ -4,7 +4,8 @@ import { computed } from 'vue';
 import MainLayout from './layout/MainLayout.vue';
 
 const route = useRoute();
-const showNavbar = computed(() => route.path !== '/login');
+const showNavbar = computed(() => route.path !== '/login' && !route.path.startsWith('/Data-Analysis'));
+
 </script>
 
 <template>

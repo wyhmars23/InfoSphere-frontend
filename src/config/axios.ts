@@ -19,7 +19,7 @@ type HttpMethod = 'get' | 'post' | 'put' | 'delete' | 'patch';
 // 创建 axios 实例
 const axiosInstance: AxiosInstance = axios.create({
   baseURL: 'http://47.102.102.119:8000', // 基础 URL
-  timeout: 10000, // 请求超时时间
+  timeout: 100000, // 请求超时时间
 });
 
 // 请求拦截器

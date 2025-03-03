@@ -1,6 +1,24 @@
 <!-- eslint-disable prettier/prettier -->
 <template>
   <div id="app">
+  <div class="header">
+    <div class="menu">
+      <a-menu
+        mode="horizontal"
+        theme="dark"
+        :selected-keys="[activeKey]"
+        title="科技信息资源汇聚与智能分析平台"
+      >
+        <a-menu-item
+          key="0"
+          :style="{ marginRight: '12px', fontSize: '20px', color: 'white' }"
+          disabled
+        >
+          科技信息资源汇聚与智能分析平台
+        </a-menu-item>
+      </a-menu>
+    </div>
+  </div>
     <main>
       <span class="menu-demo">
         <a-menu :style="{ width: '200px', height: '100%' }" :default-open-keys="['0']" :default-selected-keys="['0_0']"
@@ -137,6 +155,18 @@ body {
   /* 使用flex布局 */
   flex-direction: column;
   /* 设置为列方向，从上到下排列子元素 */
+}
+
+.header {
+  width: 100%;
+  height: 58px;
+  display: flex;
+  align-items: center;
+
+  .menu {
+    box-sizing: border-box;
+    width: 100%;
+  }
 }
 
 main {
