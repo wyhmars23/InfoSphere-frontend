@@ -1,6 +1,6 @@
 <template>
   <div class="topics" v-for="item in items" :key="item.key">
-    <a :href="`/SankeyDiagram?id=${item.title}`">
+    <a :href="`/SankeyDiagram/${item.title}`">
       <a-image width="200px" :src="item.src" :title="item.title" :description="item.description" :preview=false
         footerPosition="outer" style="vertical-align: top;" />
     </a>
@@ -12,11 +12,11 @@ import { ref } from 'vue';
 
 // 定义模拟数据
 const items = ref(
-  [1, 2, 3, 4, 5, 6].map(i => ({
+  [1, 2, 3, 4, 5, 6, 7, 8].map(i => ({
     key: `key-${i}`,
-    src: "https://source.unsplash.com/random/300x200", // 替换为实际图片 URL
-    title: `Item ${i}`,
-    description: `Description for Item ${i}`
+    src: "https://pic3.zhimg.com/v2-fe67b60f575992ea22ddfb6b7bfcb306_r.jpg", // 替换为实际图片 URL
+    title:   `T${i}_to_T${i+1}`,
+    description: `Time period${i}`
   }))
 );
 

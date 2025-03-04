@@ -1,7 +1,7 @@
 import axiosInstance from "@/config/axios"
 
 
-export  const postDetail = (data,id)=> {
+export const postDetail = (data,id)=> {
   return axiosInstance.requestMethod('get', `/search/${id}`, {"id":data})
 };
 

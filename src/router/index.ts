@@ -55,7 +55,7 @@ const router = createRouter({
       meta: { requiresAuth: true },
     },
     {
-      path: '/SankeyDiagram',
+      path: '/SankeyDiagram/:id',
       name: 'SankeyDiagram',
       component: () => import('@/views/SankeyDiagram/index.vue'),
       meta: { requiresAuth: true },
